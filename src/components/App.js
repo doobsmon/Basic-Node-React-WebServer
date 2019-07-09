@@ -1,5 +1,5 @@
 // React
-import React, { useState } from "react";
+import React from "react";
 
 // Aphrodite
 import { StyleSheet, css } from "aphrodite";
@@ -13,6 +13,9 @@ import {
   isMobile,
   browserName
 } from "react-device-detect";
+
+// React Components
+import NameSVG from "./navBar/NameSVG";
 
 // App Function Component
 export default class App extends React.Component {
@@ -62,43 +65,20 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        This is a Server-Side-Rendered React App.
-        <br />
-        CSS content is served server-side using Aphrodite.
-        <br />
-        Device is detected using react-device-detect:
-        <br />
-        &nbsp;&nbsp;&nbsp;Browser: {browserName}
-        <br />
-        &nbsp;&nbsp;&nbsp;Mobile or Browser: {isMobile && "Mobile"}
-        {isBrowser && "Browser"}
-        <br />
-        &nbsp;&nbsp;&nbsp;Orientation: {this.state.orientation}
-        <br />
-        &nbsp;&nbsp;&nbsp;Touch-Enabled: {this.state.touchscreen.toString()}
-        <br />
-        Here is a stateful button (doubles the value):
-        <br />
-        <button
-          className={css(styles.red, styles.shake)}
-          onClick={() => this.incrementCount(this.state.count)}
-        >
-          {this.state.count}
-        </button>
-        <br />
-        <br />
-        <svg x="50" height="200px" width="200px">
-          <rect width="100%" height="100%" fill="lightgray" />
-          <circle
-            className={css(styles.colorTrans)}
-            r="5px"
-            cx="50%"
-            cy="50%"
-            stroke={this.state.strokeColor}
-            onMouseOver={() => this.setStrokeColor("red")}
-            onMouseLeave={() => this.setStrokeColor("white")}
-          />
-        </svg>
+        <div style={{ textAlign: "center", float: "top" }}>
+          <NameSVG />
+          <br />
+          <br />
+          <div className={css(styles.displayInline)}>EXPERIENCE</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+          <div className={css(styles.displayInline)}>SKILLS-CHART</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div className={css(styles.displayInline)}>PORTFOLIO</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div className={css(styles.displayInline)}>INTERACTIVE</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div className={css(styles.displayInline)}>DOWNLOAD RESUME (PDF)</div>
+        </div>
       </div>
     );
   }
@@ -106,6 +86,9 @@ export default class App extends React.Component {
 
 // Aphrodite Stylesheet
 const styles = StyleSheet.create({
+  displayInline: {
+    display: "inline"
+  },
   colorTrans: {
     animationName: {
       "25%": {
